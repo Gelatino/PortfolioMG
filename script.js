@@ -1,22 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const cards = document.querySelectorAll('.movie-card');
-
-    // Update GIFs dynamically based on device type
-    const updateBackgrounds = () => {
-        const isMobile = window.innerWidth <= 768;
-        cards.forEach(card => {
-            const gifUrl = isMobile
-                ? card.dataset.mobileGif
-                : card.dataset.desktopGif;
-            card.style.backgroundImage = `url(${gifUrl})`;
-        });
-    };
-
-    // Initialize function
-    updateBackgrounds();
-
-    // Update GIFs if the window is resized
-    window.addEventListener('resize', updateBackgrounds);
 
     // Load external menu
     fetch('menu.html')
@@ -24,11 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(html => {
             document.getElementById('menu-container').innerHTML = html;
 
-            // Attach event listeners after menu is loaded
+            // Attach event listeners to menu elements
             attachMenuEventListeners();
         });
 
-    // Function to attach event listeners to menu elements
     function attachMenuEventListeners() {
         const burgerIcon = document.querySelector('.burger-icon');
         const menuLinks = document.getElementById('menuLinks');
@@ -44,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (menuOverlay) {
-            menuOverlay.addEventListener('click', closeMenu);
+            menuOverlay.addEventListener('click', toggleMenu);
         }
     }
 
@@ -57,39 +38,65 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function closeMenu() {
-        const menuLinks = document.getElementById('menuLinks');
-        const menuOverlay = document.getElementById('menuOverlay');
-        menuLinks.classList.remove('show');
-        if (menuOverlay) {
-            menuOverlay.classList.remove('show');
-        }
+
+    const cardContainer = document.getElementById('card-container');
+    let originalCards = Array.from(cardContainer.querySelectorAll('.movie-card'));
+
+    // Randomize the first card
+    const randomIndex = Math.floor(Math.random() * originalCards.length);
+    const firstCard = originalCards.splice(randomIndex, 1)[0];
+    originalCards.unshift(firstCard);
+
+    // Clear the container and re-append the cards
+    cardContainer.innerHTML = '';
+    originalCards.forEach(card => cardContainer.appendChild(card));
+
+    // Clone the cards multiple times for infinite scrolling
+    const numberOfClones = 3; // Adjust as needed
+    for (let i = 0; i < numberOfClones; i++) {
+        const clonedCards = originalCards.map(card => {
+            const clone = card.cloneNode(true);
+            clone.removeAttribute('id');
+            return clone;
+        });
+        clonedCards.forEach(card => cardContainer.appendChild(card));
     }
 
-    // Auto-scroll functionality for movie cards
-    const movieCards = document.querySelectorAll(".movie-card");
+    // Update the cards array to include all cards (originals + clones)
+    const cards = Array.from(cardContainer.querySelectorAll('.movie-card'));
 
-    movieCards.forEach((card) => {
-        const gifUrl = card.dataset.desktopGif;
-        let gifDuration = 5000; // Set appropriate duration for your GIFs
+    // Prioritize loading the first GIF
+    let isMobile = window.innerWidth <= 768;
+    const firstGifUrl = isMobile ? cards[0].dataset.mobileGif : cards[0].dataset.desktopGif;
+    cards[0].style.backgroundImage = `url(${firstGifUrl})`;
 
-        // Set GIF as background image
-        card.style.backgroundImage = `url(${gifUrl})`;
+    // Lazy load the rest of the GIFs
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
 
-        // Set a timer for scrolling after the GIF "completes"
-        setTimeout(() => {
-            scrollToNextSection(card);
-        }, gifDuration);
+    const gifObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const card = entry.target;
+                const gifUrl = isMobile ? card.dataset.mobileGif : card.dataset.desktopGif;
+                card.style.backgroundImage = `url(${gifUrl})`;
+                observer.unobserve(card); // Stop observing after loading
+            }
+        });
+    }, observerOptions);
+
+    // Start observing cards (except the first one, which is already loaded)
+    cards.slice(1).forEach(card => {
+        gifObserver.observe(card);
     });
 
-    function scrollToNextSection(currentCard) {
-        const cards = Array.from(document.querySelectorAll('.movie-card'));
-        const currentIndex = cards.indexOf(currentCard);
+    window.addEventListener('resize', () => {
+        // Update isMobile and reload images if necessary
+        isMobile = window.innerWidth <= 768;
+        // Optionally, reload images for currently visible cards
+    });
 
-        // Scroll to the next card if it exists
-        if (currentIndex !== -1 && currentIndex < cards.length - 1) {
-            const nextCard = cards[currentIndex + 1];
-            nextCard.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-    }
 });

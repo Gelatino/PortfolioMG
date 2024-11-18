@@ -11,6 +11,7 @@
     pointer-events: none; /* So it doesn't interfere with interactions */
 }
 
+
 .main-title {
     font-size: 1.5rem; /* Smaller size */
     font-weight: bold;
@@ -27,7 +28,7 @@
 }
 
 .sub-title {
-    font-size: 1rem;
+    font-size: .5rem;
     margin-top: -5px; /* Bring closer to main title */
 }
 
@@ -38,8 +39,12 @@
     right: 20px;
     font-size: 2.5rem;
     cursor: pointer;
-    color:white;
+    color:black;
     z-index: 1000; /* Higher z-index to stay above the menu */
+}
+
+.index-page .burger-icon {
+    color: white; /* Override color for index page */
 }
 
 
