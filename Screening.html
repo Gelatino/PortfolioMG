@@ -26,28 +26,17 @@
     .card3 { background-image: url('https://gelatino.github.io/Portfolio/assets/img/Oneira/snap3.png'); }
     .card4 { background-image: url('https://gelatino.github.io/Portfolio/assets/img/Oneira/snap4.png'); }
 
-    /* global text */
-    .card p, .scroll-arrow {
-      position: absolute; z-index: 1; text-shadow: 1px 1px 4px rgba(0,0,0,0.7); line-height: 1.4; margin: 0;
-      position: absolute; z-index: 1; text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
-      margin: 0; line-height: 1.4; color: #fff;
-    }
-    .card a { color: #fff; text-decoration: underline; }
+    /* global text and arrow styling */
+    .card p, .scroll-arrow { position: absolute; z-index: 1; text-shadow: 1px 1px 4px rgba(0,0,0,0.7); margin: 0; line-height: 1.4; color: #fff; }
+    .card a { text-decoration: none; }
     .card1 p { font-family: 'Futura', sans-serif; }
 
     /* Card 1 layout */
     .card1 .title { top: 20px; left: 20px; font-size: 5em; color: #E4007F; text-align: left; }
     .card1 .screening { top: 100px; left: 20px; font-size: 1.8em; font-weight: bold; }
     .card1 .when { bottom: 60px; right: 20px; font-size: 1.8em; font-weight: bold; }
-    .scroll-arrow {
-      bottom: 20px; right: 20px; font-size: 2em;
-      animation: bounce 2s infinite;
-    }
-    @keyframes bounce {
-      0%,20%,50%,80%,100% { transform: translateY(0); }
-      40% { transform: translateY(-10px); }
-      60% { transform: translateY(-5px); }
-    }
+    .scroll-arrow { bottom: 20px; right: 20px; font-size: 2em; animation: bounce 2s infinite; }
+    @keyframes bounce { 0%,20%,50%,80%,100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
 
     /* Card 2 */
     .card2 .top-text { top: 15%; width: 90%; left: 50%; transform: translateX(-50%); font-size: 2em; }
@@ -58,27 +47,23 @@
     .card3 .center-text {
       top: 40%; left: 50%; transform: translate(-50%, -50%);
       font-size: 2em; background: transparent;
-      border: 4px dashed #E4007F; padding: 8px 16px;
-      white-space: nowrap; font-style: italic;
+      border: 4px dashed #E4007F; padding: 8px 16px; white-space: nowrap; font-style: italic;
     }
     .card3 .bottom-text { bottom: 10%; width: 90%; left: 50%; transform: translateX(-50%); font-size: 1.8em; }
 
     /* Card 4 */
-    .center-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1; }
+    .card4 .center-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1; }
     .tickets-btn {
-      display: inline-block;
-      position: relative;
-      z-index: 1;
-      background: #E4007F;
-      border: none;
-      color: #fff;
-      padding: 12px 24px;
-      border-radius: 6px;
-      font-weight: bold;
-      font-size: 1.2em;
-      cursor: pointer;
+      background-color: #E4007F; border: none; color: #fff;
+      padding: 12px 24px; border-radius: 6px;
+      font-weight: bold; font-size: 1.2em; cursor: pointer;
+      text-decoration: none;
     }
-    .card4 .disclaimer { position: absolute; bottom: 20px; left: 20px; right: 20px; text-align: center; font-size: 0.8em; padding: 0 20px; z-index:1; }@media (max-width: 480px) {
+    .tickets-btn:hover { opacity: 0.9; }
+    .card4 .disclaimer { position: absolute; bottom: 20px; left: 20px; right: 20px; text-align: center; font-size: 0.8em; padding: 0 20px; z-index: 1; }
+
+    /* Mobile tweaks */
+    @media (max-width: 480px) {
       .card1 .when { bottom: 90px; }
       .scroll-arrow { bottom: 10px; right: 10px; }
       .card2 .top-text, .card2 .bottom-text { font-size: 1.2em; }
@@ -107,19 +92,8 @@
   </div>
 
   <div class="card card4">
-    <div id="eventbrite-widget-container-1397927130679" class="content"></div>
+    <div class="center-text"><a href="https://www.eventbrite.com/e/screening-tickets-1397927130679" target="_blank" class="tickets-btn">TICKETS</a></div>
     <p class="disclaimer">(If you need to cancel later, no problem. And if you made a donation and want it refunded, just let me know.)</p>
   </div>
-
-  <!-- Eventbrite Checkout Widget -->
-  <script src="https://www.eventbrite.com/static/widgets/eb_widgets.js"></script>
-  <script type="text/javascript">
-    window.EBWidgets && EBWidgets.createWidget({
-      widgetType: 'checkout',
-      eventId: '1397927130679',
-      iframeContainerId: 'eventbrite-widget-container-1397927130679',
-      iframeContainerHeight: 600
-    });
-  </script>
 </body>
 </html>
