@@ -8,17 +8,11 @@
     @import url('https://fonts.googleapis.com/css2?family=Futura:wght@700&display=swap');
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { height: 100%; overflow-y: auto; scroll-snap-type: y mandatory; }
-    body {
-      font-family: Arial, sans-serif;
-      color: #fff;
-      overflow-x: hidden;
-    }
+    body { font-family: Arial, sans-serif; color: #fff; overflow-x: hidden; }
     .card {
       position: relative;
-      width: 100%;
-      height: 100vh;
-      background-size: cover;
-      background-position: center;
+      width: 100%; height: 100vh;
+      background-size: cover; background-position: center;
       scroll-snap-align: start;
     }
     .card::before {
@@ -32,38 +26,50 @@
     .card3 { background-image: url('https://gelatino.github.io/Portfolio/assets/img/Oneira/snap3.png'); }
     .card4 { background-image: url('https://gelatino.github.io/Portfolio/assets/img/Oneira/snap4.png'); }
 
-    .card p {
-      position: absolute; text-align: center; z-index: 1;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.7); line-height: 1.4; margin: 0;
+    /* global text */
+    .card p, .scroll-arrow {
+      position: absolute; z-index: 1; text-shadow: 1px 1px 4px rgba(0,0,0,0.7); line-height: 1.4; margin: 0;
+      position: absolute; z-index: 1; text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+      margin: 0; line-height: 1.4; color: #fff;
     }
     .card a { color: #fff; text-decoration: underline; }
     .card1 p { font-family: 'Futura', sans-serif; }
 
-    /* Card 1 */
+    /* Card 1 layout */
     .card1 .title { top: 20px; left: 20px; font-size: 5em; color: #E4007F; text-align: left; }
-    .card1 .screening { top: 100px; left: 20px; font-size: 1.8em; font-weight: bold; text-align: left; }
-    .card1 .when { bottom: 20px; right: 20px; font-size: 1.8em; font-weight: bold; text-align: right; }
+    .card1 .screening { top: 100px; left: 20px; font-size: 1.8em; font-weight: bold; }
+    .card1 .when { bottom: 60px; right: 20px; font-size: 1.8em; font-weight: bold; }
+    .scroll-arrow {
+      bottom: 20px; right: 20px; font-size: 2em;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%,20%,50%,80%,100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5px); }
+    }
 
     /* Card 2 */
-    .card2 .top-text { top: 20%; width: 90%; left: 50%; transform: translateX(-50%); font-size: 2em; }
-    .card2 .bottom-text { bottom: 20%; width: 90%; left: 50%; transform: translateX(-50%); font-size: 2em; }
+    .card2 .top-text { top: 15%; width: 90%; left: 50%; transform: translateX(-50%); font-size: 2em; }
+    .card2 .bottom-text { bottom: 15%; width: 90%; left: 50%; transform: translateX(-50%); font-size: 2em; }
 
-    /* Card 3 - bolder dashed frame */
+    /* Card 3 */
     .card3 .top-text { top: 10%; width: 90%; left: 50%; transform: translateX(-50%); font-size: 2em; }
     .card3 .center-text {
-      position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%);
+      top: 40%; left: 50%; transform: translate(-50%, -50%);
       font-size: 2em; background: transparent;
-      border: 4px dashed #E4007F; /* thicker dashed frame */
-      padding: 8px 16px; white-space: nowrap;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
-      font-style: italic;
+      border: 4px dashed #E4007F; padding: 8px 16px;
+      white-space: nowrap; font-style: italic;
     }
     .card3 .bottom-text { bottom: 10%; width: 90%; left: 50%; transform: translateX(-50%); font-size: 1.8em; }
 
-    /* Card 4 - solid pink background for button */
-    .card4 .center-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+    /* Card 4 */
+    .center-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1; }
     .tickets-btn {
-      background-color: #E4007F;
+      display: inline-block;
+      position: relative;
+      z-index: 1;
+      background: #E4007F;
       border: none;
       color: #fff;
       padding: 12px 24px;
@@ -72,8 +78,13 @@
       font-size: 1.2em;
       cursor: pointer;
     }
-    .tickets-btn:hover { opacity: 0.9; }
-    .card4 .disclaimer { position: absolute; bottom: 20px; left: 20px; right: 20px; text-align: center; font-size: 0.8em; padding: 0 10px; }
+    .card4 .disclaimer { position: absolute; bottom: 20px; left: 20px; right: 20px; text-align: center; font-size: 0.8em; padding: 0 20px; z-index:1; }@media (max-width: 480px) {
+      .card1 .when { bottom: 90px; }
+      .scroll-arrow { bottom: 10px; right: 10px; }
+      .card2 .top-text, .card2 .bottom-text { font-size: 1.2em; }
+      .card3 .top-text, .card3 .center-text { font-size: 1.2em; border-width: 3px; padding: 6px 12px; }
+      .card3 .bottom-text { font-size: 1em; }
+    }
   </style>
 </head>
 <body>
@@ -81,6 +92,7 @@
     <p class="title">ONEIRA</p>
     <p class="screening">Family and friends screening</p>
     <p class="when">11 July - 20:30 - <a href="https://maps.app.goo.gl/sVrFZrx9pZqCQP7x8" target="_blank">Il Kino</a></p>
+    <div class="scroll-arrow">↓</div>
   </div>
 
   <div class="card card2">
@@ -95,8 +107,19 @@
   </div>
 
   <div class="card card4">
-    <div class="center-text"><button class="tickets-btn">TICKETS</button></div>
+    <div id="eventbrite-widget-container-1397927130679" class="content"></div>
     <p class="disclaimer">(If you need to cancel later, no problem. And if you made a donation and want it refunded, just let me know.)</p>
   </div>
+
+  <!-- Eventbrite Checkout Widget -->
+  <script src="https://www.eventbrite.com/static/widgets/eb_widgets.js"></script>
+  <script type="text/javascript">
+    window.EBWidgets && EBWidgets.createWidget({
+      widgetType: 'checkout',
+      eventId: '1397927130679',
+      iframeContainerId: 'eventbrite-widget-container-1397927130679',
+      iframeContainerHeight: 600
+    });
+  </script>
 </body>
 </html>
