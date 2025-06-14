@@ -9,6 +9,8 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { height: 100%; overflow-y: auto; scroll-snap-type: y mandatory; }
     body { font-family: Arial, sans-serif; color: #fff; overflow-x: hidden; }
+    .pink { color: #E4007F; }
+    .blue { color: #0970FE; }
     .card {
       position: relative;
       width: 100%; height: 100vh;
@@ -28,7 +30,7 @@
 
     /* global text and arrow styling */
     .card p, .scroll-arrow { position: absolute; z-index: 1; text-shadow: 1px 1px 4px rgba(0,0,0,0.7); margin: 0; line-height: 1.4; color: #fff; }
-    .card a { text-decoration: none; }
+    .card a { color: lightblue; text-decoration: none; }
     .card1 p { font-family: 'Futura', sans-serif; }
 
     /* Card 1 layout */
@@ -39,17 +41,18 @@
     @keyframes bounce { 0%,20%,50%,80%,100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
 
     /* Card 2 */
-    .card2 .top-text { top: 15%; width: 90%; left: 50%; transform: translateX(-50%); font-size: 2em; }
-    .card2 .bottom-text { bottom: 15%; width: 90%; left: 50%; transform: translateX(-50%); font-size: 2em; }
+    .card2 .top-text { top: 15%; width: 90%; left: 50%; transform: translateX(-50%); font-size: 2em; text-align: center; }
+    .card2 .bottom-text { bottom: 15%; width: 90%; left: 50%; transform: translateX(-50%); font-size: 2em; text-align: center; }
 
     /* Card 3 */
-    .card3 .top-text { top: 10%; width: 90%; left: 50%; transform: translateX(-50%); font-size: 2em; }
+    .card3 .top-text { top: 10%; width: 90%; left: 50%; transform: translateX(-50%); font-size: 2em; text-align: center; }
     .card3 .center-text {
       top: 40%; left: 50%; transform: translate(-50%, -50%);
       font-size: 2em; background: transparent;
-      border: 4px dashed #E4007F; padding: 8px 16px; white-space: nowrap; font-style: italic;
+      border: 4px dashed #E4007F; padding: 8px 16px;
+      white-space: nowrap; font-style: italic;
     }
-    .card3 .bottom-text { bottom: 10%; width: 90%; left: 50%; transform: translateX(-50%); font-size: 1.8em; }
+    .card3 .bottom-text { bottom: 10%; width: 90%; left: 50%; transform: translateX(-50%); font-size: 1.8em; text-align: center; }
 
     /* Card 4 */
     .card4 .center-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1; }
@@ -81,14 +84,13 @@
   </div>
 
   <div class="card card2">
-    <p class="top-text">After a couple of years, I finally finished the movie I shot in Mexico and I’d love for you to see it.</p>
-    <p class="bottom-text">It’s a small, private screening, not a public event.<br>Just a way to share the film with people I care about.</p>
+    <p class="top-text">Shot in Mexico with a beautiful team, <span class="pink">Oneira</span> tells the <span class="blue">story of Emili</span> — a girl torn between helping her mother run a small-town restaurant and chasing her dream of becoming an actress.</p>
+    <p class="bottom-text"> <span class="blue"> This private screening </span>is a way to <span class="pink">celebrate</span> the film and share it with friends and family.</p>
   </div>
 
   <div class="card card3">
-    <p class="top-text">Renting the cinema costs €200. Tickets are free with voluntary contribution.</p>
-    <p class="center-text">Pitch in</p>
-    <p class="bottom-text">Anything extra will go to festival submissions — they cost around €40 each, and I’d love to send the film to as many as possible.</p>
+    <p class="top-text">Help <span class="pink">Oneira</span> reach more people. Your donation will go toward the <span class="blue"> cinema rental </span> (€8 per person) and <span class="blue">festival submissions</span> (€40 each).</p>
+    <p class="bottom-text">Just grab a <span class="pink">ticket to join</span> — and if you’d like to support the film, you can leave a donation when you book.</p>
   </div>
 
   <div class="card card4">
