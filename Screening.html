@@ -126,10 +126,10 @@
     const params = new URLSearchParams(window.location.search);
     const d = params.get("d");
 
-    let donationSentence = "<span class='highlight-text'>Contributions are optional</span><br><span style='color: var(--text);'>suggested €5 to help cover the cinema rental.</span>";
+    let donationSentence = "<span class='highlight-text'>Tickets Required - Contributions are optional</span><br><span style='color: var(--text);'>We suggest €10 to help cover the cinema rental and future festival submissions.</span>";
 
     if (d === "z") {
-      donationSentence = "<span class='highlight-text'>Contributions are optional</span><br><span style='color: var(--text);'>suggested €10 to help cover the cinema rental (~€8 per seat) and festival submissions (~€40 each).</span>";
+      donationSentence = "<span class='highlight-text'>Tickets Required - Contributions are optional</span><br><span style='color: var(--text);'>We suggest €10 to help cover the cinema rental and future festival submissions.</span>";
     }
 
     document.getElementById("donation-text").innerHTML = donationSentence;
