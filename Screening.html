@@ -96,7 +96,8 @@
   <section class="card card3" id="support">
     <div class="content">
       <h2 style="color: var(--text);">Support the screening</h2>
-      <p id="donation-text">Your presence matters most.</p>
+      <p  class='highlight-text'>Your presence matters most.</p>
+      <span id="donation-text">Ticket required - contribution optional</br> (suggested €10)</span>
     </div>
   </section>
 
@@ -123,16 +124,16 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    const params = new URLSearchParams(window.location.search);
-    const d = params.get("d");
+    // const params = new URLSearchParams(window.location.search);
+    // const d = params.get("d");
 
-    let donationSentence = "<span class='highlight-text'>Tickets Required - Contributions are optional</span><br><span style='color: var(--text);'>We suggest €10 to help cover the cinema rental and future festival submissions.</span>";
+    // let donationSentence = "<span class='highlight-text'>Tickets Required - Contributions are optional</span><br><span style='color: var(--text);'>We suggest €10 to help cover the cinema rental and future festival submissions.</span>";
 
-    if (d === "z") {
-      donationSentence = "<span class='highlight-text'>Tickets Required - Contributions are optional</span><br><span style='color: var(--text);'>We suggest €10 to help cover the cinema rental and future festival submissions.</span>";
-    }
+    // if (d === "z") {
+    //   donationSentence = "<span class='highlight-text'>Tickets Required - Contributions are optional</span><br><span style='color: var(--text);'>We suggest €10 to help cover the cinema rental and future festival submissions.</span>";
+    // }
 
-    document.getElementById("donation-text").innerHTML = donationSentence;
+    // document.getElementById("donation-text").innerHTML = donationSentence;
 
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', (e) => {
