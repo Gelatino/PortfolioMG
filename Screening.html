@@ -12,15 +12,14 @@
       --accent: #E4007F;
       --text: #ffffff;
       --muted: rgba(255,255,255,0.85);
+      --highlight: #FFD369;
       --title-font: Futura, "Futura PT", "Century Gothic", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       --body-font: Futura, "Futura PT", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
     }
 
     * { box-sizing: border-box; }
-    html, body { background: var(--bg-dark); color: var(--text); font-family: var(--body-font); height: 100%; margin: 0; overflow-y: scroll; scroll-snap-type: y mandatory; scroll-padding-top: 0; -webkit-overflow-scrolling: touch; }
-    body { background: var(--bg-dark); color: var(--text); font-family: var(--body-font); scroll-snap-type: y mandatory; overflow-y: scroll; }
+    html, body { background: var(--bg-dark); color: var(--text); font-family: var(--body-font); height: 100%; margin: 0; overflow-x: hidden; overflow-y: scroll; scroll-snap-type: y mandatory; scroll-padding-top: 0; -webkit-overflow-scrolling: touch; text-align:center; }
 
-    /* Layout: full-height cards with snap */
     .card { position: relative; height: 100svh; display: grid; place-items: center; text-align: center; overflow: hidden; scroll-snap-align: start; scroll-snap-stop: always; }
     .card::before { content: ""; position: absolute; inset: 0; background-size: cover; background-position: center; transform: scale(1.03); }
     .card::after { content: ""; position: absolute; inset: 0; background: linear-gradient( to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.55) ); }
@@ -28,67 +27,45 @@
     .content { position: relative; z-index: 1; width: min(90%, 980px); margin: 0 auto; }
     h1, h2, h3 { margin: 0 0 12px; font-family: var(--title-font); text-wrap: balance; }
     h1 { font-size: clamp(36px, 6vw, 64px); letter-spacing: 0.5px; }
-    h2 { font-size: clamp(24px, 4.2vw, 40px); }
+    h2 { font-size: clamp(24px, 4.2vw, 40px); color: var(--text); }
     p { font-size: clamp(16px, 2.5vw, 20px); line-height: 1.5; color: var(--muted); margin: 10px 0; text-wrap: pretty; }
 
-    .tagline { font-weight: 600; font-size: clamp(18px, 3vw, 22px); opacity: 0.95; }
+    .hero-title { font-size: clamp(44px, 7vw, 84px); font-weight: 700; letter-spacing: 1px; color: var(--text); font-family: var(--title-font); }
 
-    .blurb { display: inline-block; background: rgba(0,0,0,0.45); backdrop-filter: blur(1px); padding: 10px 14px; border-left: 4px solid var(--accent); border-radius: 8px; text-wrap: balance; }
+    .hero-where a { color: var(--highlight); text-decoration: none; font-weight: 700; }
+    .hero-where a:hover { opacity: 0.85; }
 
-    /* Hero (Screen 1) */
     .card1::before { background-image: url('../assets/images/Oneira/Oneira_Still_2.jpg'); }
-    .hero-title { font-size: clamp(44px, 7vw, 84px); font-weight: 700; letter-spacing: 1px; color: var(--accent);  color: var(--accent);
-}
-    .hero-meta { margin-top: 12px; font-size: clamp(14px, 2.4vw, 18px); opacity: 0.95; }
-    .hero-where { margin-top: 4px; font-size: clamp(14px, 2.4vw, 18px); opacity: 0.95; }
-
-    /* Screen 2 */
     .card2::before { background-image: url('../assets/images/Oneira/Oneira_Still_4.jpg'); }
-
-    /* Screen 3 */
     .card3::before { background-image: url('../assets/images/Oneira/Oneira_Still_3.jpg'); }
-
-    /* Screen 4 */
     .card4::before { background-image: url('../assets/images/Oneira/Oneira_Still_5.jpg'); }
 
-    /* Trailer wrapper */
+    @media (max-width: 600px) {
+      .card1::before { background-position: 70% center; }
+      .content { text-align:center; margin: 0 auto; max-width: 100%; overflow-x: hidden; }
+    }
+
     .trailer-wrap { width: 90%; max-width: 720px; margin: 24px auto 0; z-index: 1; }
     .trailer { position: relative; padding-top: 56.25%; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 28px rgba(0,0,0,0.35); }
     .trailer iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
     .trailer-link { text-align: center; margin-top: 8px; opacity: 0.9; font-size: 0.95em; }
 
-    /* Buttons */
     .btn { display: inline-block; background: var(--accent); color: white; text-decoration: none; font-weight: 700; padding: 12px 18px; border-radius: 999px; margin-top: 16px; box-shadow: 0 6px 14px rgba(0,0,0,0.25); }
     .btn:hover { opacity: 0.9; }
     .ghost { background: transparent; border: 2px solid white; color: white; font-weight: 600; }
 
-    /* Sticky CTA */
-    .sticky-cta { position: fixed; right: 16px; bottom: 16px; background: var(--accent); color: #fff; text-decoration: none; padding: 12px 18px; border-radius: 999px; font-weight: 700; box-shadow: 0 6px 14px rgba(0,0,0,0.25); z-index: 1000; }
-    .sticky-cta:hover { opacity: 0.9; }
-
-    /* TOP MENU */
-    .topbar { position: fixed; top: 0; left: 0; right: 0; display: flex; gap: 18px; justify-content: center; align-items: center; padding: 10px 12px; z-index: 999; background: linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(0,0,0,0.0)); backdrop-filter: blur(2px); }
-    .topbar a { color: #fff; text-decoration: none; font-weight: 700; letter-spacing: 0.4px; opacity: 0.95; padding: 6px 10px; border-radius: 999px; }
-    .topbar a:hover, .topbar a.active { background: rgba(255,255,255,0.12); opacity: 1; }
-
-    /* DOT NAV */
     .dotnav { position: fixed; right: 14px; top: 50%; transform: translateY(-50%); display: grid; gap: 10px; z-index: 1000; }
     .dotnav a { width: 10px; height: 10px; border-radius: 50%; display: block; background: rgba(255,255,255,0.35); border: 2px solid rgba(255,255,255,0.6); }
     .dotnav a.active { background: var(--accent); border-color: var(--accent); }
     .dotnav a:hover { background: rgba(255,255,255,0.8); }
 
-    footer { text-align: center; padding: 20px; color: rgba(255,255,255,0.7); font-size: 14px; }
+    .highlight-text { color: var(--highlight); font-weight: 700; }
 
-    @media (max-width: 420px) {
-      .trailer-wrap { width: 94%; }
-      .dotnav { right: 10px; }
-    }
+    footer { text-align: center; padding: 20px; color: rgba(255,255,255,0.7); font-size: 14px; }
   </style>
 </head>
 
 <body>
-  
-
   <div class="dotnav" aria-hidden="true">
     <a href="#home" class="active" aria-label="Home"></a>
     <a href="#about" aria-label="About"></a>
@@ -97,34 +74,28 @@
     <a href="#tickets" aria-label="Tickets"></a>
   </div>
 
-  <a class="sticky-cta" href="#tickets">Get Tickets</a>
-
   <section class="card card1" id="home">
     <div class="content">
       <h1 class="hero-title">ONEIRA</h1>
-      <p class="hero-meta"><span id="date">27 Sep 2025</span><span id=\"time\">16:30–17:30</span></p>
-      <p class=\"hero-where\">SINEMA TRANSTOPIA</p>
-      <a class="btn" href="#tickets">Get Tickets</a>
+      <p class="hero-meta"><span id="date">27 Sep 2025</span> · <span id="time">16:30–17:30</span></p>
+      <p class="hero-where"><a href="https://maps.app.goo.gl/tNfzWQyyeXK9x29G7" target="_blank" rel="noopener">SINEMA TRANSTOPIA</a></p>
+      <a class="btn" href="https://www.eventbrite.de/e/private-screening-tickets-1681446564939?aff=oddtdtcreator" target="_blank" rel="noopener">Get Tickets</a>
       <a class="btn ghost" href="#trailer">Watch Trailer</a>
     </div>
   </section>
 
   <section class="card card2" id="about">
     <div class="content">
-      
       <h2>About the film</h2>
-      <p>Shot in Mexico, <em>Oneira</em> follows Emili — a young woman caught between helping her mother keep a small-town restaurant alive and pursuing her dream of becoming an actress.</p>
-      <p class="blurb">Private preview before the festival run.</p>
-      <a class="btn ghost" href="https://filmfreeway.com/Oneira557" target="_blank" rel="noopener">FilmFreeway Page</a>
+      <p><span class="highlight-text">27 min, Fiction, Mexico</span></p>
+      <p><em>Oneira</em> follows Emili — a young woman caught between helping her mother keep a small-town restaurant alive and pursuing her dream of becoming an actress.</p>
     </div>
   </section>
 
   <section class="card card3" id="support">
     <div class="content">
-      <h2>Support the screening</h2>
-      <p>Your presence matters most. Contributions are optional — suggested <strong>€10</strong> to help cover the cinema rental (~€8 per seat) and festival submissions (~€40 each).</p>
-      <p class="blurb">By joining, you’re not just watching a film — you’re helping it travel further.</p>
-      <a class="btn" href="#tickets">Reserve a Seat</a>
+      <h2 style="color: var(--text);">Support the screening</h2>
+      <p id="donation-text">Your presence matters most.</p>
     </div>
   </section>
 
@@ -136,12 +107,9 @@
         <div class="trailer">
           <iframe src="https://player.vimeo.com/video/1114726826?badge=0&autopause=0&player_id=0&app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" title="Oneira Trailer"></iframe>
         </div>
-        <p class="trailer-link"><a href="https://vimeo.com/1114726826" target="_blank" rel="noopener">Watch on Vimeo</a></p>
       </div>
 
-      <h2 style="margin-top:28px;">Tickets</h2>
-      <p>Private screening · <span id="date2">27 Sep 2025</span> · <span id="place2">Berlin</span> · <span id="time2">16:30–17:30</span></p>
-      <a class="btn" href="#" target="_blank" rel="noopener">Get Tickets</a>
+      <a class="btn" href="https://www.eventbrite.de/e/private-screening-tickets-1681446564939?aff=oddtdtcreator" target="_blank" rel="noopener">Get Tickets</a>
       <a class="btn ghost" href="#home">Back to Top</a>
     </div>
   </section>
@@ -153,6 +121,17 @@
   <script src="https://player.vimeo.com/api/player.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    const params = new URLSearchParams(window.location.search);
+    const d = params.get("d");
+
+    let donationSentence = "<span class='highlight-text'>Contributions are optional</span><br><span style='color: var(--text);'>suggested €5 to help cover the cinema rental.</span>";
+
+    if (d === "z") {
+      donationSentence = "<span class='highlight-text'>Contributions are optional</span><br><span style='color: var(--text);'>suggested €10 to help cover the cinema rental (~€8 per seat) and festival submissions (~€40 each).</span>";
+    }
+
+    document.getElementById("donation-text").innerHTML = donationSentence;
 
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', (e) => {
@@ -168,11 +147,9 @@
     });
 
     const sections = Array.from(document.querySelectorAll('.card'));
-    const menuLinks = Array.from(document.querySelectorAll('.topbar a'));
     const dotLinks  = Array.from(document.querySelectorAll('.dotnav a'));
 
     const setActive = (id) => {
-      menuLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === `#${id}`));
       dotLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === `#${id}`));
     };
 
