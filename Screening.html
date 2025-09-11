@@ -51,6 +51,24 @@
     .trailer iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
     .trailer-link { text-align: center; margin-top: 8px; opacity: 0.9; font-size: 0.95em; }
 
+    .trailer.big {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      padding-top: 0;           /* remove aspect ratio padding */
+      border-radius: 0;
+      z-index: 10000;
+    }
+
+    .trailer.big iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
     .btn { display: inline-block; background: var(--accent); color: white; text-decoration: none; font-weight: 700; padding: 12px 18px; border-radius: 999px; margin-top: 16px; box-shadow: 0 6px 14px rgba(0,0,0,0.25); }
     .btn:hover { opacity: 0.9; }
     .ghost { background: transparent; border: 2px solid white; color: white; font-weight: 600; }
@@ -63,6 +81,9 @@
     .highlight-text { color: var(--highlight); font-weight: 700; }
 
     footer { text-align: center; padding: 20px; color: rgba(255,255,255,0.7); font-size: 14px; }
+
+    
+
   </style>
 </head>
 
@@ -89,15 +110,15 @@
     <div class="content">
       <h2>About the film</h2>
       <p><span class="highlight-text">27 min, Fiction, Mexico</span></p>
-      <p><em>Oneira</em> follows Emili — a young woman caught between helping her mother keep a small-town restaurant alive and pursuing her dream of becoming an actress.</p>
+      <p><em>Oneira</em> follows Emili, a young woman caught between helping her mother keep a small-town restaurant alive and pursuing her dream of becoming an actress.</p>
     </div>
   </section>
 
   <section class="card card3" id="support">
     <div class="content">
       <h2 style="color: var(--text);">Support the screening</h2>
-      <p  class='highlight-text'>Your presence matters most.</p>
-      <span id="donation-text">Ticket required - contribution optional</br> (suggested €10)</span>
+      <p  class='highlight-text'>Your presence matters most. What’s important is that you come and share the film with us.</p>
+      <span id="donation-text">Ticket required - contribution optional (suggested €10)</span>
     </div>
   </section>
 
@@ -123,17 +144,6 @@
   <script src="https://player.vimeo.com/api/player.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // const params = new URLSearchParams(window.location.search);
-    // const d = params.get("d");
-
-    // let donationSentence = "<span class='highlight-text'>Tickets Required - Contributions are optional</span><br><span style='color: var(--text);'>We suggest €10 to help cover the cinema rental and future festival submissions.</span>";
-
-    // if (d === "z") {
-    //   donationSentence = "<span class='highlight-text'>Tickets Required - Contributions are optional</span><br><span style='color: var(--text);'>We suggest €10 to help cover the cinema rental and future festival submissions.</span>";
-    // }
-
-    // document.getElementById("donation-text").innerHTML = donationSentence;
 
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', (e) => {
@@ -161,6 +171,23 @@
       });
     }, { threshold: 0.6 });
     sections.forEach(s => obs.observe(s));
+
+    const iframe = document.querySelector('.trailer iframe');
+    
+    const player = new Vimeo.Player(iframe);
+
+    player.on('play', () => {
+      iframe.parentElement.classList.add('big');
+    });
+
+    player.on('pause', () => {
+      iframe.parentElement.classList.remove('big');
+    });
+
+    player.on('ended', () => {
+      iframe.parentElement.classList.remove('big');
+    });
+
   </script>
 </body>
 </html>
