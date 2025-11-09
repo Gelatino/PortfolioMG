@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ONEIRA – Proyecciones</title>
+  <meta name="description" content="Proyecciones de ONEIRA – cortometraje mexicano sobre Emili, dividida entre ayudar a su madre y perseguir su sueño de convertirse en actriz." />
+  <style>
+    :root {
+      --bg-dark: #0b0b0c;
+      --accent: #E4007F;
+      --text: #ffffff;
+      --muted: rgba(255,255,255,0.85);
+      --highlight: #FFD369;
+      --title-font: Futura, "Futura PT", "Century Gothic", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      --body-font: Futura, "Futura PT", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html, body { background: var(--bg-dark); color: var(--text); font-family: var(--body-font); height: 100%; margin: 0; overflow-x: hidden; overflow-y: scroll; scroll-snap-type: y mandatory; text-align:center; }
+
+    .card { position: relative; height: 100svh; display: grid; place-items: center; text-align: center; overflow: hidden; scroll-snap-align: start; scroll-snap-stop: always; }
+    .card::before { content: ""; position: absolute; inset: 0; background-size: cover; background-position: center; transform: scale(1.03); }
+    .card::after { content: ""; position: absolute; inset: 0; background: linear-gradient( to bottom, rgba(0,0,0,.3), rgba(0,0,0,0.5) ); }
+    .content { position: relative; z-index: 1; width: min(90%, 980px); margin: 0 auto; }
+
+    /* Fondos */
+    .card1::before { background-image: url('../assets/images/Oneira/Oneira_Still_2.jpg'); }
+    .card2::before { background-image: url('../assets/images/Oneira/Oneira_Still_4.jpg'); }
+    .card3::before { background-image: url('../assets/images/Oneira/Oneira_Still_3.jpg'); }
+    .card4::before { background-image: url('../assets/images/Oneira/Oneira_Still_5.jpg'); }
+    .card5::before { background-image: url('../assets/images/Oneira/Oneira_Still_6.png'); } /* Póster delante */
+    .card6::before { background-image: url('../assets/images/Oneira/Oneira_Still_7.png'); } /* Soundtrack */
+    .card7::before { background-image: url('../assets/images/Oneira/Oneira_Still_1.jpg'); } /* Tráiler */
+
+    h1, h2 { margin: 0 0 12px; font-family: var(--title-font); }
+    h2 { font-size: clamp(30px, 5vw, 50px); }
+    p { font-size: clamp(16px, 2.5vw, 20px); line-height: 1.5; color: var(--muted); margin: 10px 0; }
+    .hero-title { font-size: clamp(50px, 8vw, 96px); font-weight: 700; }
+    .highlight-text { color: var(--highlight); font-weight: 700; }
+
+    .btn { display: inline-block; background: var(--accent); color: white; text-decoration: none; font-weight: 700; padding: 12px 18px; border-radius: 999px; margin: 8px; box-shadow: 0 6px 14px rgba(0,0,0,0.25); }
+    .btn:hover { opacity: 0.9; }
+    .btn.ghost { background: transparent; border: 2px solid white; color: white; font-weight: 600; }
+
+    .trailer-wrap { width: 90%; max-width: 720px; margin: 24px auto 0; z-index: 1; }
+    .trailer { position: relative; padding-top: 56.25%; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 28px rgba(0,0,0,0.35); }
+    .trailer iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+    /* Pantalla completa al reproducir */
+    .trailer.big {
+      position: fixed; inset: 0; width: 100vw; height: 100vh;
+      padding-top: 0; border-radius: 0; z-index: 10000; background: #000;
+    }
+    .trailer.big iframe { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+    /* Dotnav */
+    .dotnav { position: fixed; right: 14px; top: 50%; transform: translateY(-50%); display: grid; gap: 10px; z-index: 1000; }
+    .dotnav a { width: 10px; height: 10px; border-radius: 50%; display: block; background: rgba(255,255,255,0.35); border: 2px solid rgba(255,255,255,0.6); }
+    .dotnav a.active { background: var(--accent); border-color: var(--accent); }
+    .dotnav a:hover { background: rgba(255,255,255,0.8); }
+
+    /* Poster inline (tarjeta) */
+    .poster-wrap { display: grid; place-items: center; gap: 16px; }
+    .poster-img {
+      width: min(80vw, 520px);
+      height: auto;
+      border-radius: 14px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.45);
+      cursor: zoom-in;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .poster-img:hover { transform: scale(1.02); }
+    .poster-img.fullscreen {
+      position: fixed;
+      inset: 0;
+      margin: auto;
+      width: min(95vw, 1000px);
+      height: auto;
+      max-height: 95vh;
+      z-index: 10001;
+      box-shadow: none;
+      border-radius: 0;
+      cursor: zoom-out;
+    }
+
+    /* SOUNDTRACK icons */
+    .platforms { display: flex; justify-content: center; align-items: center; gap: clamp(18px, 4vw, 36px); flex-wrap: wrap; margin-top: 10px; }
+    .icon-link { display: inline-grid; place-items: center; gap: 8px; text-decoration: none; color: #fff; }
+    .icon-link img {
+      width: clamp(44px, 8vw, 64px);
+      height: clamp(44px, 8vw, 64px);
+      display: block;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.12);
+      padding: 10px;
+      transition: transform .15s ease, background .15s ease;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    }
+    .icon-link:hover img { transform: translateY(-2px) scale(1.04); background: rgba(255,255,255,0.18); }
+    .icon-label { font-size: 14px; opacity: .9; }
+
+    footer { text-align: center; padding: 20px; color: rgba(255,255,255,0.7); font-size: 14px; }
+
+    @media (max-width: 600px) {
+      /* centrado/ajuste de foco en móvil para card1 */
+      .card1::before { background-position: 40% center; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- DOTNAV -->
+  <div class="dotnav" aria-hidden="true">
+    <a href="#home" class="active" aria-label="Inicio"></a>
+    <a href="#about" aria-label="Sobre la película"></a>
+    <a href="#cdmx" aria-label="CDMX"></a>
+    <a href="#cuernavaca" aria-label="Cuernavaca"></a>
+    <a href="#poster" aria-label="Póster"></a>
+    <a href="#soundtrack" aria-label="Soundtrack"></a>
+    <a href="#trailer" aria-label="Tráiler"></a>
+  </div>
+
+  <!-- HOME -->
+  <section class="card card1" id="home">
+    <div class="content">
+      <h1 class="hero-title">ONEIRA</h1>
+      <p class="hero-meta"><span class="highlight-text">Funciones para familiares y amigos</span></p>
+      <a class="btn" href="#cdmx">17 Diciembre · CDMX</a>
+      <a class="btn ghost" href="#cuernavaca">20 Diciembre · Cuernavaca</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="card card2" id="about">
+    <div class="content">
+      <h2>Sobre la película</h2>
+      <p><span class="highlight-text">27 min, Ficción, México</span></p>
+      <p><em>Oneira</em> sigue a Emili, una joven dividida entre ayudar a su madre a mantener un pequeño restaurante y perseguir su sueño de convertirse en actriz.</p>
+    </div>
+  </section>
+
+  <!-- CDMX -->
+  <section class="card card3" id="cdmx">
+    <div class="content">
+      <h2>Proyección CDMX</h2>
+      <p class="highlight-text">Martes 17 de diciembre, 20:00 hrs</p>
+      <p>
+        <a class="btn" href="https://maps.app.goo.gl/XZpDfJZ1qt1EW4Vy8" target="_blank" rel="noopener">Cineclub Santa Rosa</a>
+        <a
+          class="btn ghost"
+          target="_blank" rel="noopener"
+          href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=ONEIRA%20%E2%80%93%20Proyecci%C3%B3n%20CDMX&dates=20251217T200000/20251217T210000&details=Proyecci%C3%B3n%20de%20ONEIRA%20para%20familiares%20y%20amigos.&location=Cineclub%20Santa%20Rosa%2C%20Ciudad%20de%20M%C3%A9xico&ctz=America%2FMexico_City"
+        >Añadir al calendario</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- CUERNAVACA -->
+  <section class="card card4" id="cuernavaca">
+    <div class="content">
+      <h2>Proyección Cuernavaca</h2>
+      <p class="highlight-text">Sábado 20 de diciembre, 18:00 hrs</p>
+      <p>
+        <a class="btn" href="https://maps.app.goo.gl/rJkGAyRf3NMbtUWw8" target="_blank" rel="noopener">Cine Morelos</a>
+        <a
+          class="btn ghost"
+          target="_blank" rel="noopener"
+          href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=ONEIRA%20%E2%80%93%20Proyecci%C3%B3n%20Cuernavaca&dates=20251220T180000/20251220T190000&details=Proyecci%C3%B3n%20de%20ONEIRA%20para%20familiares%20y%20amigos.&location=Cine%20Morelos%20%C2%B7%20Sala%20Gabriel%20Figueroa%2C%20Cuernavaca%2C%20Morelos&ctz=America%2FMexico_City"
+        >Añadir al calendario</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- POSTER (clic para fullscreen) -->
+  <section class="card card5" id="poster">
+    <div class="content">
+      <h2>Póster</h2>
+      <div class="poster-wrap">
+        <img
+          id="posterImg"
+          class="poster-img"
+          src="../assets/images/Oneira/Poster.jpg"
+          alt="Póster de ONEIRA" />
+        <p style="opacity:.85">Toca para ampliar / Esc para cerrar</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOUNDTRACK (nuevo con íconos) -->
+  <section class="card card6" id="soundtrack">
+    <div class="content">
+      <h2>Soundtrack</h2>
+    </br>
+      <div class="platforms">
+        <a class="icon-link" href="https://open.spotify.com/artist/1LeuAxt1INVHdJvzFmpoyd?si=uAclPPOATkK3wIGgkIgmJw" target="_blank" rel="noopener" aria-label="Spotify">
+          <img src="../assets/icons/spotify.png" alt="Spotify" />
+          <span class="icon-label">Spotify</span>
+        </a>
+        <a class="icon-link" href="https://music.apple.com/us/album/oneira-soundtrack-single/1843208870" target="_blank" rel="noopener" aria-label="Apple Music">
+          <img src="../assets/icons/apple-music.png" alt="Apple Music" />
+          <span class="icon-label">Apple Music</span>
+        </a>
+        <a class="icon-link" href="https://www.youtube.com/playlist?list=OLAK5uy_l73Af8oCORQWsoeIbaSQiSUkLzu9C0O0E" target="_blank" rel="noopener" aria-label="YouTube">
+          <img src="../assets/icons/youtube.png" alt="YouTube" />
+          <span class="icon-label">YouTube</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAILER -->
+  <section class="card card7" id="trailer">
+    <div class="content">
+      <h2>Tráiler</h2>
+      <div class="trailer-wrap">
+        <div class="trailer">
+          <iframe src="https://player.vimeo.com/video/1114726826?badge=0&autopause=0&player_id=0&app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" title="Oneira Trailer"></iframe>
+        </div>
+      </div>
+      <p><a class="btn ghost" href="#home">Volver arriba</a></p>
+    </div>
+  </section>
+
+  <footer>© <span id="year"></span> ONEIRA · Todos los derechos reservados</footer>
+
+  <script src="https://player.vimeo.com/api/player.js"></script>
+  <script>
+    // Año footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Scroll suave
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href');
+        if (id.length > 1) {
+          const el = document.querySelector(id);
+          if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        }
+      });
+    });
+
+    // Dotnav activo
+    const sections = Array.from(document.querySelectorAll('.card'));
+    const dotLinks  = Array.from(document.querySelectorAll('.dotnav a'));
+    const setActive = (id) => { dotLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === `#${id}`)); };
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) setActive(entry.target.id); });
+    }, { threshold: 0.6 });
+    sections.forEach(s => obs.observe(s));
+
+    // Vimeo: expandir al reproducir
+    const iframe = document.querySelector('.trailer iframe');
+    const player = new Vimeo.Player(iframe);
+    player.on('play', () => {
+      iframe.parentElement.classList.add('big');
+      document.documentElement.style.overflow = 'hidden';
+    });
+    function shrinkPlayer() {
+      iframe.parentElement.classList.remove('big');
+      document.documentElement.style.overflow = '';
+    }
+    player.on('pause', shrinkPlayer);
+    player.on('ended', shrinkPlayer);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') shrinkPlayer(); });
+
+    // Poster: clic para entrar/salir de fullscreen
+    const posterImg = document.getElementById('posterImg');
+    function togglePosterFullscreen() {
+      const isFull = posterImg.classList.toggle('fullscreen');
+      document.documentElement.style.overflow = isFull ? 'hidden' : '';
+    }
+    posterImg.addEventListener('click', togglePosterFullscreen);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && posterImg.classList.contains('fullscreen')) togglePosterFullscreen();
+    });
+  </script>
+</body>
+</html>
