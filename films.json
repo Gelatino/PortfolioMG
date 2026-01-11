@@ -1,0 +1,65 @@
+[
+  {
+    "id": "believe-in-yourself",
+    "title": "Believe in Yourself",
+    "year": "2022",
+    "runtime": "20 min",
+    "role": "Director, Writer, Editor",
+    "mobileGif": "assets/images/BelieveInYourself/BIYMobile.gif",
+    "desktopGif": "assets/images/BelieveInYourself/BIYWeb.gif",
+    "youtubeEmbed": "KLVyd5TRmq8",
+    "synopsis": "Norman is going through a hard time and meets his long-lost friend, Daniel, to ask him for help. When Anna, a pretty journalist, enters the bar, Daniel sees her as the perfect opportunity for Norman to start once again believing in himself.",
+    "directorsNote": "The idea of the film came about when I was thinking about people who are about to commit a crime and how they, like all of us, must doubt themselves. Not a moral doubt, like 'should I do it or not?', that's not what the topic was, but more similar to self-doubt:\n\n\"Can I do it? What if I get caught? Perhaps I am not good enough.\"\n\nWe all have those moments of self-doubt and in those moments when we need motivation we are so caught up believing in ourselves that we forget to think if we should do it or not.",
+    "poster": "https://gelatino.github.io/Portfolio/assets/img/BIY_Poster.jpg",
+    "credits": {
+      "director": "Miguel Guzman",
+      "writer": "Miguel Guzman",
+      "editor": "Miguel Guzman",
+      "cast": ["Eneko Sanz", "Martin Oliver Thiel"]
+    },
+    "photos": [],
+    "btsPhotos": [],
+    "detailPage": "believe-in-yourself.html"
+  },
+  {
+    "id": "mail-bag",
+    "title": "Mail-Bag",
+    "year": "2021",
+    "runtime": "12 min",
+    "role": "Director, Editor",
+    "mobileGif": "assets/images/Mailbag/Mailbag.gif",
+    "desktopGif": "assets/images/Mailbag/Mailbag.gif",
+    "youtubeEmbed": "xTiEtx05mlk",
+    "synopsis": "A woman lives vicariously through the letters she needs to deliver until she finds one whose destiny she does not want to accept.",
+    "directorsNote": "The project was developed in Berlin during the Covid-19 pandemic when the entire country was in strict lockdown. While many worked from home during this period, it is not an option for the antagonist's profession.\n\nAlthough not explicitly, the script tries to explore the dilemma faced by this group of workers, who kept knocking on empty doors.",
+    "poster": "https://gelatino.github.io/Portfolio/assets/img/Mail-bag_poster.jpg",
+    "credits": {
+      "director": {"name": "Miguel Guzman", "imdb": "nm10337366"},
+      "editor": "Miguel Guzman"
+    },
+    "photos": ["assets/images/Mailbag/Mail-bag_1.png","assets/images/Mailbag/Mail-bag_2.png"],
+    "btsPhotos": ["assets/images/Mailbag/Mail-bag_1.png","assets/images/Mailbag/Mail-bag_2.png"],
+    "detailPage": "mail-bag.html"
+  },
+  {
+    "id": "potato-potato",
+    "title": "Potato Potato",
+    "year": "2020",
+    "runtime": "15 min",
+    "role": "Director, Writer, Editor",
+    "mobileGif": "assets/images/PotatoPotato/PotatoPotatoMobile.gif",
+    "desktopGif": "assets/images/PotatoPotato/PotatoPotatoWEB.gif",
+    "youtubeEmbed": "K5vK-8vGrWs",
+    "synopsis": "David, the chef of the restaurant, has invested years on Potato Potato. Hannah has been working with him for a year. Today, Kam, the owner of the restaurant, comes in to let them know he has sold the restaurant. David has to either buy the restaurant back or accept that his beloved restaurant is over.",
+    "directorsNote": "With Potato Potato I try to explore how different people deal with things coming to an end. In this case, the end of a restaurant that means everything to Peter and Hannah.",
+    "poster": "https://gelatino.github.io/Portfolio/assets/img/PotatoPotato_poster.jpg",
+    "credits": {
+      "director": "Miguel Guzman",
+      "writer": "Miguel Guzman",
+      "editor": "Miguel Guzman"
+    },
+    "photos": [],
+    "btsPhotos": [],
+    "detailPage": "potato-potato.html"
+  }
+]
