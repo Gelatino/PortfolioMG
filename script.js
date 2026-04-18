@@ -87,8 +87,8 @@ window.addEventListener('load', async () => {
     
     // Array of intro images (add your image paths here)
     const introImages = [
-        'assets/images/intro/intro-1.jpg'
-        // 'assets/images/intro/intro-2.jpg',
+        'assets/images/intro/intro-1.jpg',
+        'assets/images/intro/intro-2.jpg'
         // 'assets/images/intro/intro-3.jpg',
         // 'assets/images/intro/intro-4.jpg',
         // 'assets/images/intro/intro-5.jpg'

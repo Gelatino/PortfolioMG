@@ -10,14 +10,15 @@
     "youtubeEmbed": "",
     "synopsis": "Emili and her mother run a small restaurant in a forgotten town in Mexico. Surprisingly, a major tv network has announced an open casting call. Emili, who dreams of becoming an actress, sees it as the opportunity of a lifetime. She has the support of her friends, El Maradona and Antonia, who believe she can make it. However, her lack of confidence and her mother's pressure to stay and help with the restaurant make her question whether going to the casting is the right decision. All of this unfolds while the town's eyes and ears are consumed by football.",
     "directorsNote": "I want to tell the story of so many people who have big dreams but can't reach them because of their circumstances. We're used to feel-good movies where the main character gets everything they want. But in Oneira, Emili's story isn't just about how talented she is or how hard she tries, it's about how she keeps going, even when the odds are against her. It's about luck, and about being born into a tough situation. Like Emili, thousands of people don't achieve their dreams. I wanted to celebrate them and show that their stories matter and deserve to be told.",
-    "poster": "",
+    "poster": "assets/images/Oneira/Poster.jpg",
     "credits": {
       "director": "Miguel Guzman",
       "writer": "Miguel Guzman",
       "editor": "Miguel Guzman",
       "cast": []
     },
-    "photos": ["assets/images/Oneira/Oneira_1.jpg","assets/images/Oneira/Oneira_2.jpg","assets/images/Oneira/Oneira_3.jpg"],
+    "photos": ["assets/images/Oneira/Oneira_1.jpg","assets/images/Oneira/Oneira_2.jpg",
+      "assets/images/Oneira/Oneira_3.jpg","assets/images/Oneira/Oneira_4.jpg","assets/images/Oneira/Oneira_5.jpg"],
     "btsPhotos": [],
     "detailPage": "oneira.html"
   },
@@ -49,8 +50,8 @@
     "year": "2021",
     "runtime": "12 min",
     "role": "Director, Editor",
-    "mobileGif": "assets/images/Mailbag/Mailbag.gif",
-    "desktopGif": "assets/images/Mailbag/Mailbag.gif",
+    "mobileGif": "assets/images/Mailbag/Mailbag_Mobile.mp4",
+    "desktopGif": "assets/images/Mailbag/Mailbag.mp4",
     "youtubeEmbed": "xTiEtx05mlk",
     "synopsis": "A woman lives vicariously through the letters she needs to deliver until she finds one whose destiny she does not want to accept.",
     "directorsNote": "The project was developed in Berlin during the Covid-19 pandemic when the entire country was in strict lockdown. While many worked from home during this period, it is not an option for the antagonist's profession.\n\nAlthough not explicitly, the script tries to explore the dilemma faced by this group of workers, who kept knocking on empty doors.",
@@ -59,8 +60,9 @@
       "director": {"name": "Miguel Guzman", "imdb": "nm10337366"},
       "editor": "Miguel Guzman"
     },
-    "photos": ["assets/images/Mailbag/Mail-bag_1.png","assets/images/Mailbag/Mail-bag_2.png"],
-    "btsPhotos": ["assets/images/Mailbag/Mail-bag_1.png","assets/images/Mailbag/Mail-bag_2.png"],
+    "photos": ["assets/images/Mailbag/Mail-bag_1.jpg","assets/images/Mailbag/Mail-bag_2.jpg","assets/images/Mailbag/Mail-bag_3.jpg",
+      "assets/images/Mailbag/Mail-bag_4.jpg","assets/images/Mailbag/Mail-bag_5.jpg","assets/images/Mailbag/Mail-bag_6.jpg"],
+    "btsPhotos": [],
     "detailPage": "mail-bag.html"
   },
   {
