@@ -42,13 +42,23 @@ window.addEventListener('load', async () => {
             section.className = 'snap-section film-section';
             section.setAttribute('data-film', film.id);
             
-            section.innerHTML = `
-                <div class="film-media-container">
-                    <img src="${film.mobileGif}" 
+          const isVideo = (path) => path && (path.endsWith('.mp4') || path.endsWith('.webm'));
+
+            const mediaHTML = isVideo(film.desktopGif) 
+                ? `<video src="${film.desktopGif}" 
+                          data-mobile="${film.mobileGif}"
+                          data-desktop="${film.desktopGif}"
+                          autoplay loop muted playsinline
+                          class="film-bg"></video>`
+                : `<img src="${film.mobileGif}" 
                          data-mobile="${film.mobileGif}"
                          data-desktop="${film.desktopGif}"
                          alt="${film.title}"
-                         class="film-bg">
+                         class="film-bg">`;
+
+            section.innerHTML = `
+                <div class="film-media-container">
+                    ${mediaHTML}
                     <div class="film-overlay"></div>
                 </div>
                 <div class="film-info-container">
