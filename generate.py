@@ -8,6 +8,12 @@ Usage: python generate.py
 import json
 import os
 
+def generate_hero_media(path, title):
+    """Generate hero media tag, video or image based on file extension"""
+    if path.endswith('.mp4') or path.endswith('.webm'):
+        return f'<video src="{path}" autoplay loop muted playsinline class="detail-hero-bg"></video>'
+    return f'<img src="{path}" alt="{title}" class="detail-hero-bg">'
+
 def load_films():
     """Load films data from JSON file"""
     with open('films.json', 'r', encoding='utf-8') as f:
@@ -162,7 +168,7 @@ def generate_film_page(film, template):
     page = template.replace('{{TITLE}}', film['title'])
     page = page.replace('{{YEAR}}', film['year'])
     page = page.replace('{{RUNTIME}}', film.get('runtime', ''))
-    page = page.replace('{{HERO_IMAGE}}', film['desktopGif'])
+    page = page.replace('{{HERO_MEDIA}}', generate_hero_media(film['desktopGif'], film['title']))
     page = page.replace('{{YOUTUBE_EMBED}}', film['youtubeEmbed'])
     page = page.replace('{{SYNOPSIS}}', film['synopsis'])
     page = page.replace('{{PHOTOS_SECTION}}', generate_photos_html(film.get('photos', [])))

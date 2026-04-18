@@ -70,10 +70,23 @@
         
         .detail-section {
             max-width: 1000px;
+            width: 100%;
             margin: 0 auto;
             padding: calc(var(--unit) * 8) calc(var(--unit) * 4);
+            box-sizing: border-box;
         }
-        
+
+        .detail-content {
+            display: grid;
+            gap: calc(var(--unit) * 6);
+            width: 100%;
+            min-width: 0;
+        }
+
+        .detail-block {
+            min-width: 0;
+            overflow-wrap: break-word;
+        }
         .detail-video {
             aspect-ratio: 16 / 9;
             background: var(--black);
@@ -405,7 +418,7 @@
 
     <!-- Hero Section -->
     <section class="detail-hero">
-        <img src="{{HERO_IMAGE}}" alt="{{TITLE}}" class="detail-hero-bg">
+        {{HERO_MEDIA}}
         <div class="detail-hero-content">
             <h1 class="detail-hero-title">{{TITLE}}</h1>
             <p class="detail-hero-meta">{{YEAR}} · {{RUNTIME}} · SHORT FILM</p>
@@ -457,7 +470,7 @@
         <!-- Navigation -->
         <div class="detail-nav">
             <a href="index.html#work" class="back-link">← Back to Work</a>
-        <</div>
+        </div>
 
     </section>
 

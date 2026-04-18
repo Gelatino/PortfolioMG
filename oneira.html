@@ -70,10 +70,23 @@
         
         .detail-section {
             max-width: 1000px;
+            width: 100%;
             margin: 0 auto;
             padding: calc(var(--unit) * 8) calc(var(--unit) * 4);
+            box-sizing: border-box;
         }
-        
+
+        .detail-content {
+            display: grid;
+            gap: calc(var(--unit) * 6);
+            width: 100%;
+            min-width: 0;
+        }
+
+        .detail-block {
+            min-width: 0;
+            overflow-wrap: break-word;
+        }
         .detail-video {
             aspect-ratio: 16 / 9;
             background: var(--black);
@@ -405,7 +418,7 @@
 
     <!-- Hero Section -->
     <section class="detail-hero">
-        <img src="assets/images/Oneira/Oneira.mp4" alt="Oneira" class="detail-hero-bg">
+        <video src="assets/images/Oneira/Oneira.mp4" autoplay loop muted playsinline class="detail-hero-bg"></video>
         <div class="detail-hero-content">
             <h1 class="detail-hero-title">Oneira</h1>
             <p class="detail-hero-meta">2025 · 27 min · SHORT FILM</p>
@@ -482,7 +495,7 @@
         <!-- Navigation -->
         <div class="detail-nav">
             <a href="index.html#work" class="back-link">← Back to Work</a>
-        <</div>
+        </div>
 
     </section>
 
